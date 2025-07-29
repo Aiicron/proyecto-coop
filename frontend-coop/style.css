@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0ebe1;
+    color: #333;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fffdf6;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 30px;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo1 {
+    border-radius: 60px;
+    width: 60px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.logo1:hover {
+    transform: scale(1.1);
+}
+
+ul {
+    list-style: none;
+}
+
+.profile-icon {
+    font-size: 30px;
+    color: #6e5432;
+    cursor: pointer;
+}
+
+.dashboard {
+    max-width: 1100px;
+    margin: 6rem auto 3rem;
+    padding: 0 1rem;
+}
+
+.dashboard h1 {
+    font-size: 2rem;
+    color: #8b6f47;
+    text-align: center;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #666;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.status-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.status-item {
+    flex: 1 1 30%;
+    display: flex;
+    align-items: center;
+    background-color: #fffdf6;
+    border: 1px solid #d4c2a4;
+    border-radius: 10px;
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.status-item i {
+    font-size: 2rem;
+    color: #8b6f47;
+}
+
+.status-item h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: #6e5432;
+}
+
+.status-item p {
+    margin: 0.3rem 0 0;
+    font-size: 0.95rem;
+}
+
+.card {
+    background-color: #fffdf6;
+    border: 1px solid #d4c2a4;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: #6e5432;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    margin-bottom: 0.5rem;
+}
+
+.card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.card ul li {
+    margin-bottom: 0.5rem;
+}
+
+.card button {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #8b6f47;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card button:hover {
+    background-color: #6e5432;
+}

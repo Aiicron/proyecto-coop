@@ -1,7 +1,7 @@
 const loginForm = document.getElementById('loginForm');
 const loginMensaje = document.getElementById('loginMensaje');
 
-loginForm.addEventListener('submit', function(e) {
+loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
   const email = document.getElementById('email').value.trim();
@@ -17,9 +17,13 @@ loginForm.addEventListener('submit', function(e) {
   loginMensaje.className = "mensaje";
 
   setTimeout(() => {
-    //se conecta con API real
     loginMensaje.textContent = "Inicio de sesión exitoso.";
     loginMensaje.className = "mensaje success";
     loginForm.reset();
+
+    setTimeout(() => {
+      window.location.href = "../frontend-coop/index.html";
+    }, 800);
+
   }, 1000);
 });
