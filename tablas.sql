@@ -1,5 +1,5 @@
-CREATE DATABASE Cooperativa;
-USE Cooperativa;
+CREATE DATABASE viviendas;
+USE viviedas;
 
 
 CREATE TABLE usuarios (
