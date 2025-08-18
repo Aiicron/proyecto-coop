@@ -1,26 +1,25 @@
-const form = document.getElementById('formulario');
-const mensaje = document.getElementById('mensaje');
+async function cambiarIdioma(lang) {
+  try {
+    const resp = await fetch(`lang/${lang}.json`);
+    const textos = await resp.json();
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (textos[key]) el.textContent = textos[key];
+    });
 
-  const nombre = document.getElementById('nombre').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const telefono = document.getElementById('telefono').value.trim();
-  const cedula = document.getElementById('cedula').value.trim();
-
-  if (!nombre || !email || !telefono || !cedula) {
-    mensaje.textContent = "Todos los campos son obligatorios.";
-    mensaje.className = "mensaje error";
-    return;
+    localStorage.setItem("lang", lang);
+  } catch (err) {
+    console.error("Error cargando idioma:", err);
   }
+}
 
-  mensaje.textContent = "Enviando...";
-  mensaje.className = "mensaje";
+document.addEventListener("DOMContentLoaded", () => {
+  const lang = localStorage.getItem("lang") || "es";
+  document.getElementById("language-select").value = lang;
+  cambiarIdioma(lang);
 
-  setTimeout(() => {
-    mensaje.textContent = "Solicitud enviada con exito! Dentro de las próximas 24 hs nos pondremos en contacto al correo ingresado.";
-    mensaje.className = "mensaje success";
-    form.reset();
-  }, 1000);
+  document.getElementById("language-select").addEventListener("change", (e) => {
+    cambiarIdioma(e.target.value);
+  });
 });
