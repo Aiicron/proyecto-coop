@@ -10,16 +10,30 @@ async function cambiarIdioma(lang) {
 
     localStorage.setItem("lang", lang);
   } catch (err) {
-    console.error("Error cargando idioma:", err);
+    console.log("Error cargando idioma:", err);
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  const select = document.getElementById("language-select");
   const lang = localStorage.getItem("lang") || "es";
-  document.getElementById("language-select").value = lang;
+  select.value = lang;
   cambiarIdioma(lang);
 
-  document.getElementById("language-select").addEventListener("change", (e) => {
+
+  select.addEventListener("change", e => {
     cambiarIdioma(e.target.value);
+  });
+
+
+  const form = document.getElementById("formulario");
+  const mensaje = document.getElementById("mensaje");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    mensaje.textContent = "Solicitud enviada con éxito. Nos contactaremos con usted dentro de las próximas 48 horas.";
+    mensaje.className = "mensaje success";
+    form.reset();
   });
 });

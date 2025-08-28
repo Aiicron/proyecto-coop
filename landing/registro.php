@@ -19,9 +19,9 @@ if (isset($_POST['registro'])) {
     $ejecutarInsertar = mysqli_query($enlace, $insertarDatos);
 
     if ($ejecutarInsertar) {
-        $mensaje = "<p class='success'>✅ Solicitud de registro enviada con éxito. En las próximas 48 hs recibirá un correo con más información si su solicitud es aprobada.</p>";
+        $mensaje = "<p class='success'> Solicitud de registro enviada con éxito. En las próximas 48 hs recibirá un correo con más información si su solicitud es aprobada.</p>";
     } else {
-        $mensaje = "<p class='error'>❌ Error: " . mysqli_error($enlace) . "</p>";
+        $mensaje = "<p class='error'> Error: " . mysqli_error($enlace) . "</p>";
     }
 }
 ?>
