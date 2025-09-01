@@ -177,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Ingresar</button>
             <div class="mensaje"><?php echo $mensaje; ?></div>
 
-            <a href="../landing/index.html">Volver</a>
+            <a href="../landing/registro.php">Volver</a>
         </form>
     </main>
 

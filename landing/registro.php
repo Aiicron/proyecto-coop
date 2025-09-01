@@ -56,10 +56,10 @@ if (isset($_POST['registro'])) {
                     </select>
                 </div>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="registro.php">Inicio</a></li>
                     <li><a href="nosotros.html">Nosotros</a></li>
                     <li><a href="#contacto">Contacto</a></li>
-                    <li><a href="../usuarios/index.html" class="IS">Iniciar sesión</a></li>
+                    <li><a href="../usuarios/login.php" class="IS">Iniciar sesión</a></li>
                 </ul>
             </div>
         </nav>
@@ -107,9 +107,9 @@ if (isset($_POST['registro'])) {
         <div class="footer-columns">
             <div class="footer-column">
                 <h4>Navegación</h4>
-                <a href="index.html">Inicio</a>
+                <a href="registro.php">Inicio</a>
                 <a href="nosotros.html">Nosotros</a>
-                <a href="../usuarios/index.html">Iniciar Sesión</a>
+                <a href="../usuarios/login.php">Iniciar Sesión</a>
             </div>
 
             <div class="footer-column social-center">
