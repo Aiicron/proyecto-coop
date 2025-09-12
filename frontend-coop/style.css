@@ -1,12 +1,7 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
+    margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #f0ebe1;
+    background-color: #d4d3d3;
     color: #333;
 }
 
@@ -18,142 +13,145 @@ nav {
     z-index: 1000;
     background-color: #fffdf6;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    padding: 10px 30px;
+    padding: 12px 30px;
 }
 
 .nav-content {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .logo1 {
-    border-radius: 60px;
-    width: 60px;
-    transition: transform 0.3s;
-    cursor: pointer;
+    width: 50px;
+    border-radius: 50%;
 }
 
-.logo1:hover {
-    transform: scale(1.1);
+.perfil-container {
+    position: relative;
+    display: inline-block;
 }
 
-ul {
-    list-style: none;
-}
-
-.profile-icon {
+.perfil-icon {
     font-size: 30px;
-    color: #6e5432;
+    color: #8b6f47;
     cursor: pointer;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.perfil-icon:hover {
+    transform: scale(1.1);
+    color: #6e5432;
+}
+
+.perfil-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 55px;
+    background: #fffdf6;
+    border: 1px solid #d4c2a4;
+    border-radius: 6px;
+    list-style: none;
+    padding: 10px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 2000;
+}
+
+.perfil-menu li {
+    text-align: left;
+}
+
+.perfil-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.3s;
+}
+
+.perfil-menu li a:hover {
+    background: #c9a674;
+    color: #1b1a18;
+    border-radius: 4px;
+}
+
+.perfil-container.active .perfil-menu {
+    display: block;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("fondo2.jpg") no-repeat center/cover;
+    filter: blur(8px);
+    z-index: -1;
 }
 
 .dashboard {
-    max-width: 1100px;
-    margin: 6rem auto 3rem;
-    padding: 0 1rem;
+    margin-top: 100px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.dashboard h1 {
-    font-size: 2rem;
-    color: #8b6f47;
-    text-align: center;
-}
-
-.subtitulo {
-    text-align: center;
-    color: #666;
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
-}
-
-.status-panel {
+.highlight {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-}
-
-.status-item {
-    flex: 1 1 30%;
-    display: flex;
-    align-items: center;
-    background-color: #fffdf6;
-    border: 1px solid #d4c2a4;
-    border-radius: 10px;
-    padding: 1rem;
-    gap: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-.status-item i {
-    font-size: 2rem;
-    color: #8b6f47;
-}
-
-.status-item h3 {
-    margin: 0;
-    font-size: 1rem;
-    color: #6e5432;
-}
-
-.status-item p {
-    margin: 0.3rem 0 0;
-    font-size: 0.95rem;
-}
-
-.card {
-    background-color: #fffdf6;
-    border: 1px solid #d4c2a4;
-    border-radius: 10px;
-    margin: 10px;
+    justify-content: space-around;
+    background: #c9a674;
+    color: #1b1a18;
+    font-weight: 600;
     padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.highlight i {
+    color: #fffdf6;
+    margin-right: 8px;
 }
 
-.card h2 {
+.strip {
+    background-color: #fffdf6;
+    border-left: 6px solid #8b6f47;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.strip h2 {
     color: #6e5432;
-    font-size: 1.3rem;
     margin-bottom: 1rem;
 }
 
-.card p {
-    margin-bottom: 0.5rem;
+.strip.alt {
+    border-left-color: #c9a674;
 }
 
-.card ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.card ul li {
-    margin-bottom: 0.5rem;
-}
-
-.card button {
+button {
     margin-top: 1rem;
-    padding: 0.6rem 1rem;
+    padding: 10px 18px;
+    background: #8b6f47;
+    color: #fffdf6;
     border: none;
     border-radius: 6px;
-    background-color: #8b6f47;
-    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-weight: 600;
 }
 
-.card button:hover {
-    background-color: #6e5432;
+button:hover {
+    background: #6e5432;
 }

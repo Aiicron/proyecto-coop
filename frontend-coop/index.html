@@ -2,83 +2,67 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio | Usuario</title>
-    <link href="=" https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Usuario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body>
-
-    <header>
-        <nav>
-            <div class="nav-content">
-                <div class="nav-left">
-                    <img src="logonuevo.png" alt="Logo" class="logo1">
-                </div>
-                <ul>
-                    <li><i class="ph ph-user-circle profile-icon"></i></li>
-                </ul>
+    <nav>
+        <div class="nav-content">
+            <div class="nav-left">
+                <img src="logonuevo.png" class="logo1" alt="Logo">
+                <h2>Nuevo Amanecer</h2>
             </div>
-        </nav>
-    </header>
+            <div class="nav-right">
+                <div class="perfil-container">
+                    <i class="fi fi-sr-user perfil-icon"></i>
+                    <ul class="perfil-menu">
+                        <li><a href="#">Mi perfil</a></li>
+                        <li><a href="#">Configuración</a></li>
+                        <li><a href="#">Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="background"></div>
 
     <main class="dashboard">
-        <h1>Bienvenido, Usuario 👋</h1>
-        <p class="subtitulo">Aquí puedes consultar tu información, estado y actividad en la cooperativa.</p>
-
-        <section class="status-panel">
-            <div class="status-item">
-                <i class="ph ph-currency-circle-dollar"></i>
-                <div>
-                    <h3>Pagos al día</h3>
-                    <p>Sí</p>
-                </div>
-            </div>
-            <div class="status-item">
-                <i class="ph ph-clock"></i>
-                <div>
-                    <h3>Horas trabajadas</h3>
-                    <p>20 esta semana</p>
-                </div>
-            </div>
-            <div class="status-item">
-                <i class="ph ph-house"></i>
-                <div>
-                    <h3>Unidad asignada</h3>
-                    <p>B05</p>
-                </div>
-            </div>
+        <section class="highlight">
+            <div><i class="ph ph-currency-circle-dollar"></i> Pagos al día ✔</div>
+            <div><i class="ph ph-clock"></i> 20 horas esta semana</div>
+            <div><i class="ph ph-house"></i> Unidad B05</div>
         </section>
 
-        <section>
-            <div class="card">
-                <h2>📥 Últimos Comprobantes</h2>
-                <p><strong>27/07/2025:</strong> En revisión</p>
-                <p><strong>15/07/2025:</strong> Aprobado</p>
-                <button>Subir nuevo</button>
-            </div>
+        <section class="strip">
+            <h2>Últimos Comprobantes</h2>
+            <p><strong>27/07/2025:</strong> En revisión</p>
+            <p><strong>15/07/2025:</strong> Aprobado</p>
+            <button>Subir nuevo</button>
+        </section>
 
-            <div class="card">
-                <h2>🧮 Resumen General</h2>
-                <ul>
-                    <li>Participación: ✅</li>
-                    <li>Pagos al día: ✅</li>
-                    <li>Horas mínimas: ✅</li>
-                </ul>
-            </div>
+        <section class="strip alt">
+            <h2>Resumen General</h2>
+            <p>Participación: ✔</p>
+            <p>Pagos al día: ✔</p>
+            <p>Horas mínimas: ✔</p>
+        </section>
 
-            <div class="card">
-                <h2>🕒 Historial de Horas</h2>
-                <p><strong>Semana 1:</strong> 18 horas</p>
-                <p><strong>Semana 2:</strong> 22 horas</p>
-                <p><strong>Semana 3:</strong> 15 horas</p>
-            </div>
+        <section class="strip">
+            <h2>Historial de Horas</h2>
+            <p>Semana 1: 18h</p>
+            <p>Semana 2: 22h</p>
+            <p>Semana 3: 15h</p>
         </section>
     </main>
-
 </body>
+
+<script src="script.js"></script>
 
 </html>

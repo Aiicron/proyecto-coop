@@ -5,103 +5,121 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Backoffice | Administración</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <nav class="sidebar">
-        <img src="logoredondo.png" alt="Logo Cooperativa" class="logo-backoffice" />
-        <h2>Administración</h2>
-        <ul>
-            <li><a href="#usuarios">👤 Usuarios</a></li>
-            <li><a href="#pagos">💳 Pagos</a></li>
-            <li><a href="#horas">⏱ Horas</a></li>
-            <li><a href="#unidades">🏠 Unidades</a></li>
-            <li><a href="#reportes">📊 Reportes</a></li>
+
+    <nav class="topbar">
+        <div class="logo-area">
+            <img src="logoredondo.png" alt="Logo Cooperativa" class="logo-backoffice" />
+            <h2>Administración</h2>
+        </div>
+        <ul class="menu">
+            <li><a href="#usuarios">Usuarios</a></li>
+            <li><a href="#pagos">Pagos</a></li>
+            <li><a href="#horas">Horas</a></li>
+            <li><a href="#unidades">Unidades</a></li>
+            <li><a href="#reportes">Reportes</a></li>
         </ul>
     </nav>
 
+
     <main class="dashboard">
-        <header>
+
+        <div class="panel-header">
             <h1>Panel de Gestión</h1>
-        </header>
+        </div>
 
-        <section id="usuarios" class="card">
-            <h2>👤 Gestión de Usuarios</h2>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="usuarios-body"></tbody>
-            </table>
-        </section>
+        <div class="grid">
 
-        <section id="pagos" class="card">
-            <h2>💳 Validación de Comprobantes</h2>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Fecha</th>
-                        <th>Archivo</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="pagos-body"></tbody>
-            </table>
-        </section>
+            <section id="usuarios" class="card">
+                <h2>Gestión de Usuarios</h2>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usuarios-body"></tbody>
+                    </table>
+                </div>
+            </section>
 
-        <section id="horas" class="card">
-            <h2>⏱ Registro de Horas</h2>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Semana</th>
-                        <th>Horas</th>
-                        <th>Motivo</th>
-                    </tr>
-                </thead>
-                <tbody id="horas-body"></tbody>
-            </table>
-        </section>
+            <section id="pagos" class="card">
+                <h2>Validación de Comprobantes</h2>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Fecha</th>
+                                <th>Archivo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pagos-body"></tbody>
+                    </table>
+                </div>
+            </section>
 
-        <section id="unidades" class="card">
-            <h2>🏠 Asignación de Unidades</h2>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Unidad</th>
-                        <th>Estado de Obra</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="unidades-body"></tbody>
-            </table>
-        </section>
+            <section id="horas" class="card">
+                <h2>Registro de Horas</h2>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Semana</th>
+                                <th>Horas</th>
+                                <th>Motivo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="horas-body"></tbody>
+                    </table>
+                </div>
+            </section>
 
-        <section id="reportes" class="card">
-            <h2>📊 Estado General</h2>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Pagos al día</th>
-                        <th>Horas cumplidas</th>
-                        <th>Estado General</th>
-                    </tr>
-                </thead>
-                <tbody id="reportes-body"></tbody>
-            </table>
-        </section>
+            <section id="unidades" class="card">
+                <h2>Asignación de Unidades</h2>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Unidad</th>
+                                <th>Estado de Obra</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="unidades-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="reportes" class="card">
+                <h2>Estado General</h2>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Pagos al día</th>
+                                <th>Horas cumplidas</th>
+                                <th>Estado General</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportes-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
     </main>
 
     <script src="script.js"></script>
