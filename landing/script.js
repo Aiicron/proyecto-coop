@@ -21,11 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   select.value = lang;
   cambiarIdioma(lang);
 
-
   select.addEventListener("change", e => {
     cambiarIdioma(e.target.value);
   });
-
 
   const form = document.getElementById("formulario");
   const mensaje = document.getElementById("mensaje");
@@ -35,5 +33,20 @@ document.addEventListener("DOMContentLoaded", () => {
     mensaje.textContent = "Solicitud enviada con éxito. Nos contactaremos con usted dentro de las próximas 48 horas.";
     mensaje.className = "mensaje success";
     form.reset();
+  });
+
+  const passwordInput = document.getElementById("contraseña");
+  const toggle = document.querySelector(".toggle-password");
+
+  toggle.addEventListener("click", () => {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggle.classList.remove("fa-eye");
+      toggle.classList.add("fa-eye-slash");
+    } else {
+      passwordInput.type = "password";
+      toggle.classList.remove("fa-eye-slash");
+      toggle.classList.add("fa-eye");
+    }
   });
 });

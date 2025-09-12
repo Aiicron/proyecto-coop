@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -43,7 +44,8 @@
 
     <section class="info-cooperativa">
       <h3 data-i18n="que_es_titulo">¿Qué es una cooperativa de viviendas?</h3>
-      <p data-i18n="que_es_texto">Una cooperativa de viviendas es una organización donde cada integrante participa activamente en la construcción y gestión de su hogar.</p>
+      <p data-i18n="que_es_texto">Una cooperativa de viviendas es una organización donde cada integrante participa
+        activamente en la construcción y gestión de su hogar.</p>
 
       <h3 data-i18n="porque_titulo">¿Por qué unirte a nosotros?</h3>
       <ul>
@@ -62,7 +64,10 @@
       <input type="email" id="email" required>
 
       <label for="contraseña" data-i18n="contrasena">Contraseña</label>
-      <input type="password" id="contraseña" required>
+      <div class="password-container">
+        <input type="password" id="contraseña" required>
+        <i class="fa-solid fa-eye toggle-password"></i>
+      </div>
 
       <label for="telefono" data-i18n="telefono">Teléfono</label>
       <input type="number" id="telefono" required>
@@ -90,9 +95,11 @@
       <div class="footer-column social-center">
         <h4 data-i18n="redes">Redes Sociales</h4>
         <div class="social-icons">
-          <a href="https://www.facebook.com/profile.php?id=61578779908016" target="_blank"><img src="facebook.png" alt="Facebook" class="logos"></a>
+          <a href="https://www.facebook.com/profile.php?id=61578779908016" target="_blank"><img src="facebook.png"
+              alt="Facebook" class="logos"></a>
           <a href="https://x.com/NewAmanecer" target="_blank"><img src="X.png" alt="Twitter/X" class="logos"></a>
-          <a href="https://www.instagram.com/nuevo_amanecer220507/" target="_blank"><img src="instagram.png" alt="Instagram" class="logos"></a>
+          <a href="https://www.instagram.com/nuevo_amanecer220507/" target="_blank"><img src="instagram.png"
+              alt="Instagram" class="logos"></a>
         </div>
       </div>
 
@@ -111,4 +118,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

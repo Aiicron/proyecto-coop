@@ -12,7 +12,9 @@ body {
 
 nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   background-color: #fffdf6;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -89,7 +91,10 @@ a:hover {
 
 .background {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: url(fondo2.jpg) no-repeat center;
   background-size: cover;
   filter: blur(10px);
@@ -128,7 +133,8 @@ label {
   text-align: left;
 }
 
-input, textarea {
+input,
+textarea {
   padding: 0.6rem;
   border: 1px solid #c3b091;
   border-radius: 4px;
@@ -186,7 +192,7 @@ button:hover {
   object-fit: cover;
   margin-top: 1rem;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 footer {
@@ -257,4 +263,29 @@ footer {
   color: #555;
   border-top: 1px solid #ddd;
   padding-top: 1rem;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 18px;
+  color: #6e5432;
+  transition: color 0.3s;
+}
+
+.toggle-password:hover {
+  color: #8b6f47;
 }
