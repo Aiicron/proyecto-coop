@@ -45,7 +45,7 @@ $nombreUsuario = $_SESSION['nombre'];
     <aside class="sidebar" id="sidebar">
         <h2>Menú</h2>
         <ul>
-            <li><a href="bienvenida.php">Inicio</a></li>
+            <li><a href="primera.php">Inicio</a></li>
             <li><a href="perfil.php">Mi perfil</a></li>
             <li><a href="../login/logout.php" class="logout">Cerrar sesión</a></li>
         </ul>

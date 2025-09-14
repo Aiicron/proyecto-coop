@@ -13,6 +13,16 @@ $query = "SELECT u.documento, u.nombre, u.correo, r.estado
           FROM usuarios u
           LEFT JOIN registro_autenticacion r ON u.documento = r.documento";
 $resultado = mysqli_query($enlace, $query);
+
+
+// Consulta de comprobantes iniciales pendientes
+$queryPagos = "SELECT c.id_comprobante, c.documento, u.nombre, c.archivo_pdf, c.estado, c.tipo
+               FROM comprobante_pago c
+               INNER JOIN usuarios u ON c.documento = u.documento
+               ORDER BY c.id_comprobante DESC";
+$resultPagos = mysqli_query($enlace, $queryPagos);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -85,9 +95,45 @@ $resultado = mysqli_query($enlace, $query);
 
             <!-- 🔹 Los demás módulos (pagos, horas, unidades, reportes) -->
             <section id="pagos" class="card">
-                <h2>Validación de Comprobantes</h2>
-                <p>Aquí irá la lógica de comprobantes.</p>
-            </section>
+    <h2>Validación de Comprobantes</h2>
+    <div class="table-wrapper">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Documento</th>
+                    <th>Usuario</th>
+                    <th>Tipo</th>
+                    <th>Archivo</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php while ($row = mysqli_fetch_assoc($resultPagos)) : ?>
+                <tr>
+                    <td><?php echo $row['id_comprobante']; ?></td>
+                    <td><?php echo $row['documento']; ?></td>
+                    <td><?php echo $row['nombre']; ?></td>
+                    <td><?php echo ucfirst($row['tipo']); ?></td>
+                    <td>
+                        <a href="../<?php echo $row['archivo_pdf']; ?>" target="_blank">Ver PDF</a>
+                    </td>
+                    <td><?php echo ucfirst($row['estado']); ?></td>
+                    <td>
+                        <form action="acciones.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="documento" value="<?php echo $row['documento']; ?>">
+                            <input type="hidden" name="id_comprobante" value="<?php echo $row['id_comprobante']; ?>">
+                            <button type="submit" name="accion" value="aprobar_comprobante" class="btn-aceptar">Aprobar</button>
+                            <button type="submit" name="accion" value="rechazar_comprobante" class="btn-rechazar">Rechazar</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
 
             <section id="horas" class="card">
                 <h2>Registro de Horas</h2>
