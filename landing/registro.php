@@ -13,18 +13,15 @@ if (isset($_POST['registro'])) {
     $documento = $_POST['cedula'];
     $motivo = $_POST['comentario'];
 
-    // Verificar si ya existe ese documento o correo
     $consulta = "SELECT * FROM usuarios WHERE documento='$documento' OR correo='$correo' LIMIT 1";
     $resultado = mysqli_query($enlace, $consulta);
 
     if (mysqli_num_rows($resultado) > 0) {
-        // Si existe, mostrar mensaje de error personalizado
         $mensaje = "<p class='error'> El documento o correo ya está en uso. Intente con otro.</p>";
     } else {
-        // Si no existe, insertar
         $insertarDatos = "INSERT INTO usuarios (nombre, correo, contrasena, documento, motivo_ingreso) 
                           VALUES ('$nombre', '$correo', '$contrasena', '$documento', '$motivo')";
-        
+
         if (mysqli_query($enlace, $insertarDatos)) {
             $mensaje = "<p class='success'> Solicitud de registro enviada con éxito. En las próximas 48 hs recibirá un correo con más información si su solicitud es aprobada.</p>";
         } else {

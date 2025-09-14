@@ -1,14 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const perfilContainer = document.querySelector(".perfil-container");
-    const perfilIcon = document.querySelector(".perfil-icon");
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
 
-    perfilIcon.addEventListener("click", () => {
-        perfilContainer.classList.toggle("active");
+    hamburger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        sidebar.classList.toggle("active");
     });
 
     document.addEventListener("click", (e) => {
-        if (!perfilContainer.contains(e.target)) {
-            perfilContainer.classList.remove("active");
+        if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+            sidebar.classList.remove("active");
         }
     });
 });

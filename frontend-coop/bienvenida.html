@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis pagos</title>
+    <title>Panel Usuario - Bienvenida</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <!-- Barra de navegación -->
     <nav>
         <div class="nav-content">
             <div class="hamburger" id="hamburger">
@@ -29,7 +30,7 @@
             </div>
         </div>
     </nav>
-
+    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <h2>Menú</h2>
         <ul>
@@ -41,24 +42,38 @@
         </ul>
     </aside>
 
+    <!-- Fondo -->
     <div class="background"></div>
 
+    <!-- Contenido principal -->
     <main class="dashboard">
+        <!-- Sección bienvenida -->
         <section class="strip">
-            <h2>Mis pagos</h2>
-            <p><strong>Agosto 2025:</strong> Pagado</p>
-            <p><strong>Julio 2025:</strong> Pagado</p>
-            <p><strong>Junio 2025:</strong> Pendiente</p>
+            <h2>Bienvenido, Usuario</h2>
+            <p>Nos alegra tenerte de vuelta en la plataforma de <strong>Nuevo Amanecer</strong>.</p>
+        </section>
+
+        <!-- Atajo rápido solo a pagos -->
+        <section class="highlight">
+            <div>
+                <i class="fi fi-sr-document"></i>
+                <a href="pagos.html" class="btn-hover">Subir comprobante</a>
+            </div>
+        </section>
+
+        <!-- Estado de pagos -->
+        <section class="strip">
+            <h2>Estado de tu último comprobante</h2>
+            <p><strong>27/07/2025:</strong> En revisión</p>
+            <p><strong>15/07/2025:</strong> Aprobado</p>
         </section>
 
         <section class="strip alt">
-            <h2>Acciones</h2>
-
-            <form>
-                <label for="comprobante" class="btn-hover2">Subir comprobante</label>
-                <input type="file" id="comprobante" name="comprobante" accept=".pdf,.jpg,.jpeg,.png"
-                    style="display:none;">
-            </form>
+            <h2>Recordatorios</h2>
+            <ul>
+                <li>Próxima cuota: <strong>15/09/2025</strong></li>
+                <li>Reunión mensual: <strong>20/09/2025 a las 18:00hs</strong></li>
+            </ul>
         </section>
     </main>
 
