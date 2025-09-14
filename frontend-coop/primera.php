@@ -66,7 +66,7 @@ $nombreUsuario = $_SESSION['nombre'];
         <section class="highlight">
             <div>
                 <i class="fi fi-sr-document"></i>
-                <a href="pagos.php" class="btn-hover">Subir comprobante inicial</a>
+                <a href="inicial.php" class="btn-hover">Subir comprobante inicial</a>
             </div>
         </section>
     </main>
