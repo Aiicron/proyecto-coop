@@ -8,31 +8,49 @@ $baseDeDatos = "viviendas";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 $mensaje = "";
+$mensajeClase = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $correo = $_POST['correo'];
-    $contrasena = $_POST['contrasena'];
+    $correo = mysqli_real_escape_string($enlace, $_POST['correo']);
+    $contrasena = mysqli_real_escape_string($enlace, $_POST['contrasena']);
 
+    // Buscar al usuario
     $consulta = "SELECT * FROM usuarios WHERE correo='$correo' LIMIT 1";
     $resultado = mysqli_query($enlace, $consulta);
 
     if ($resultado && mysqli_num_rows($resultado) == 1) {
         $usuario = mysqli_fetch_assoc($resultado);
 
+        // Verificar contraseña
         if ($usuario['contrasena'] === $contrasena) {
-            $_SESSION['documento'] = $usuario['documento'];
-            $_SESSION['nombre'] = $usuario['nombre'];
-            header("Location: ../frontend-coop/index.html");
-            exit();
+            // Verificar estado en registro_autenticacion
+            $doc = $usuario['documento'];
+            $estadoQuery = "SELECT estado FROM registro_autenticacion WHERE documento='$doc' LIMIT 1";
+            $estadoRes = mysqli_query($enlace, $estadoQuery);
+            $estado = mysqli_fetch_assoc($estadoRes);
+
+            if ($estado['estado'] === "aceptado") {
+                $_SESSION['documento'] = $usuario['documento'];
+                $_SESSION['nombre'] = $usuario['nombre'];
+                header("Location: ../frontend-coop/bienvenida.html");
+                exit();
+            } elseif ($estado['estado'] === "pendiente") {
+                $mensaje = "Tu solicitud aún está pendiente de aprobación.";
+                $mensajeClase = "error";
+            } elseif ($estado['estado'] === "rechazado") {
+                $mensaje = "Tu solicitud fue rechazada. Contacta a la administración.";
+                $mensajeClase = "error";
+            }
         } else {
-            $mensaje = "<p class='mensaje error'>❌ Contraseña incorrecta.</p>";
+            $mensaje = "Contraseña incorrecta.";
+            $mensajeClase = "error";
         }
     } else {
-        $mensaje = "<p class='mensaje error'>❌ Usuario no encontrado.</p>";
+        $mensaje = "Usuario no encontrado.";
+        $mensajeClase = "error";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -126,17 +144,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #6e5432;
         }
 
-        .mensaje {
+        .mensaje-container {
             margin-top: 1rem;
+            text-align: center;
+        }
+
+        .mensaje {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 6px;
             font-weight: bold;
         }
 
-        .success {
-            color: green;
+        .mensaje.error {
+            background-color: #c0392b;
+            color: #fff;
         }
 
-        .error {
-            color: red;
+        .mensaje.success {
+            background-color: #27ae60;
+            color: #fff;
         }
 
         form a {
@@ -175,7 +202,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" id="password" name="contrasena" placeholder="Tu contraseña" required>
 
             <button type="submit">Ingresar</button>
-            <div class="mensaje"><?php echo $mensaje; ?></div>
+
+            <!-- Mensaje centrado -->
+            <?php if (!empty($mensaje)) : ?>
+                <div class="mensaje-container">
+                    <div class="mensaje <?php echo $mensajeClase; ?>">
+                        <?php echo $mensaje; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
 
             <a href="../landing/registro.php">Volver</a>
         </form>

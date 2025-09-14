@@ -4,32 +4,44 @@ $usuario = "root";
 $clave = "";
 $baseDeDatos = "viviendas";
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
+
 $mensaje = "";
 
 if (isset($_POST['registro'])) {
-    $nombre = $_POST['nombre'];
-    $correo = $_POST['correo'];
-    $contrasena = $_POST['contrasena'];
-    $documento = $_POST['cedula'];
-    $motivo = $_POST['comentario'];
+    $nombre = mysqli_real_escape_string($enlace, $_POST['nombre']);
+    $correo = mysqli_real_escape_string($enlace, $_POST['correo']);
+    $contrasena = mysqli_real_escape_string($enlace, $_POST['contrasena']);
+    $documento = mysqli_real_escape_string($enlace, $_POST['cedula']);
+    $motivo = mysqli_real_escape_string($enlace, $_POST['comentario']);
 
+    // Verificar si ya existe el documento o correo
     $consulta = "SELECT * FROM usuarios WHERE documento='$documento' OR correo='$correo' LIMIT 1";
     $resultado = mysqli_query($enlace, $consulta);
 
     if (mysqli_num_rows($resultado) > 0) {
-        $mensaje = "<p class='error'> El documento o correo ya está en uso. Intente con otro.</p>";
+        $mensaje = "<p class='error'>El documento o correo ya está en uso. Intente con otro.</p>";
     } else {
-        $insertarDatos = "INSERT INTO usuarios (nombre, correo, contrasena, documento, motivo_ingreso) 
-                          VALUES ('$nombre', '$correo', '$contrasena', '$documento', '$motivo')";
-
-        if (mysqli_query($enlace, $insertarDatos)) {
-            $mensaje = "<p class='success'> Solicitud de registro enviada con éxito. En las próximas 48 hs recibirá un correo con más información si su solicitud es aprobada.</p>";
+        // Insertar usuario
+        $insertarUsuario = "INSERT INTO usuarios (documento, nombre, correo, contrasena, motivo_ingreso) 
+                            VALUES ('$documento', '$nombre', '$correo', '$contrasena', '$motivo')";
+        
+        if (mysqli_query($enlace, $insertarUsuario)) {
+            // Insertar en registro_autenticacion con estado 'pendiente'
+            $insertarRegistro = "INSERT INTO registro_autenticacion (documento, estado) 
+                                 VALUES ('$documento', 'pendiente')";
+            
+            if (mysqli_query($enlace, $insertarRegistro)) {
+                $mensaje = "<p class='success'>✅ Solicitud enviada con éxito. En 48h recibirá un correo si es aprobada.</p>";
+            } else {
+                $mensaje = "<p class='error'>Error al registrar autenticación: " . mysqli_error($enlace) . "</p>";
+            }
         } else {
-            $mensaje = "<p class='error'> Error en el registro: " . mysqli_error($enlace) . "</p>";
+            $mensaje = "<p class='error'>Error al registrar usuario: " . mysqli_error($enlace) . "</p>";
         }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
