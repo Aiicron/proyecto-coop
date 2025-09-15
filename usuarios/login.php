@@ -29,11 +29,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $estadoRes = mysqli_query($enlace, $estadoQuery);
             $estado = mysqli_fetch_assoc($estadoRes);
 
-            if ($estado['estado'] === "aceptado") {
-                $_SESSION['documento'] = $usuario['documento'];
-                $_SESSION['nombre'] = $usuario['nombre'];
-                header("Location: ../frontend-coop/inicial.php");
-                exit();
+           if ($estado['estado'] === "aceptado") {
+    // Guardar sesión
+    $_SESSION['documento'] = $usuario['documento'];
+    $_SESSION['nombre'] = $usuario['nombre'];
+
+    // Verificar si ya tiene comprobante inicial aprobado
+    $doc = $usuario['documento'];
+    $compQuery = "SELECT * FROM comprobante_pago 
+                  WHERE documento='$doc' AND tipo='inicial' AND estado='aprobado' 
+                  LIMIT 1";
+    $compRes = mysqli_query($enlace, $compQuery);
+
+    if ($compRes && mysqli_num_rows($compRes) > 0) {
+        // Si ya está aprobado el inicial -> bienvenida.php
+        header("Location: ../frontend-coop/bienvenida.php");
+    } else {
+        // Si no, que vaya a subir comprobante inicial
+        header("Location: ../frontend-coop/inicial.php");
+    }
+    exit();
+
             } elseif ($estado['estado'] === "pendiente") {
                 $mensaje = "Tu solicitud aún está pendiente de aprobación.";
                 $mensajeClase = "error";
