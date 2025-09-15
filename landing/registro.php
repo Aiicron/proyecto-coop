@@ -24,16 +24,16 @@ if (isset($_POST['registro'])) {
         // Insertar usuario
         $insertarUsuario = "INSERT INTO usuarios (documento, nombre, correo, contrasena, motivo_ingreso) 
                             VALUES ('$documento', '$nombre', '$correo', '$contrasena', '$motivo')";
-        
+
         if (mysqli_query($enlace, $insertarUsuario)) {
             // Insertar en registro_autenticacion con estado 'pendiente'
             $insertarRegistro = "INSERT INTO registro_autenticacion (documento, estado) 
                                  VALUES ('$documento', 'pendiente')";
-            
+
             if (mysqli_query($enlace, $insertarRegistro)) {
-                $mensaje = "<p class='success'>✅ Solicitud enviada con éxito. En 48h recibirá un correo si es aprobada.</p>";
+                $mensaje = "<p class='success'> Solicitud enviada con éxito. En 48h recibirá un correo si es aprobada.</p>";
             } else {
-                $mensaje = "<p class='error'>Error al registrar autenticación: " . mysqli_error($enlace) . "</p>";
+                $mensaje = "<p class='error'> Error al registrar autenticación: " . mysqli_error($enlace) . "</p>";
             }
         } else {
             $mensaje = "<p class='error'>Error al registrar usuario: " . mysqli_error($enlace) . "</p>";

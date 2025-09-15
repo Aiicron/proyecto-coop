@@ -1,3 +1,45 @@
+<?php
+session_start();
+
+// Si no está logueado, redirigir
+if (!isset($_SESSION['documento'])) {
+    header("Location: ../login/login.php");
+    exit();
+}
+
+$documento = $_SESSION['documento'];
+$nombreUsuario = $_SESSION['nombre'];
+
+// Conexión a la BD
+$conn = new mysqli("localhost", "root", "", "viviendas");
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+}
+
+// Verificar si el usuario tiene comprobante aprobado
+$query = "SELECT estado FROM comprobante_pago 
+          WHERE documento = ? AND tipo='inicial' 
+          ORDER BY id_comprobante DESC LIMIT 1";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $documento);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$acceso = false;
+if ($row = $result->fetch_assoc()) {
+    if ($row['estado'] === 'aprobado') {
+        $acceso = true;
+    }
+}
+$stmt->close();
+$conn->close();
+
+if (!$acceso) {
+    header("Location: subir_comprobante.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,60 +54,55 @@
 </head>
 
 <body>
-    <!-- Barra de navegación -->
     <nav>
         <div class="nav-content">
             <div class="hamburger" id="hamburger">
                 <span></span><span></span><span></span>
             </div>
 
-
             <div class="nav-center">
                 <h2 class="nav-title">Nuevo Amanecer</h2>
             </div>
-
 
             <div class="nav-right">
                 <img src="logonuevo.png" class="logo1" alt="Logo cooperativa">
             </div>
         </div>
     </nav>
-    <!-- Sidebar -->
+
     <aside class="sidebar" id="sidebar">
         <h2>Menú</h2>
         <ul>
-            <li><a href="bienvenida.html">Inicio</a></li>
-            <li><a href="pagos.html">Mis pagos</a></li>
-            <li><a href="horas.html">Horas</a></li>
-            <li><a href="perfil.html">Mi perfil</a></li>
-            <li><a href="#" class="logout">Cerrar sesión</a></li>
+            <li><a href="bienvenida.php">Inicio</a></li>
+            <li><a href="pagos.php">Mis pagos</a></li>
+            <li><a href="horas.php">Horas</a></li>
+            <li><a href="perfil.php">Mi perfil</a></li>
+            <li><a href="../login/logout.php" class="logout">Cerrar sesión</a></li>
         </ul>
     </aside>
 
-    <!-- Fondo -->
     <div class="background"></div>
 
-    <!-- Contenido principal -->
     <main class="dashboard">
-        <!-- Sección bienvenida -->
+
         <section class="strip">
-            <h2>Bienvenido, Usuario</h2>
-            <p>Nos alegra tenerte de vuelta en la plataforma de <strong>Nuevo Amanecer</strong>.</p>
+            <h2>Bienvenido,
+                <?php echo htmlspecialchars($nombreUsuario); ?>
+            </h2>
+            <p>Bienvenido a <strong>Nuevo Amanecer</strong>. Desde aquí podrás subir tus comprobantes, consultar tus
+                pagos y conocer tu unidad habitacional</p>
         </section>
 
-        <!-- Atajo rápido solo a pagos -->
         <section class="highlight">
             <div>
                 <i class="fi fi-sr-document"></i>
-                <a href="pagos.html" class="btn-hover">Subir comprobante</a>
+                <a href="pagos.php" class="btn-hover">Subir comprobante</a>
             </div>
         </section>
 
-        <!-- Estado de pagos -->
         <section class="strip">
             <h2>Estado de tu último comprobante</h2>
-            <p><strong>27/07/2025:</strong> En revisión</p>
-            <p><strong>15/07/2025:</strong> Aprobado</p>
+            <p><strong>Tu comprobante inicial fue aprobado</strong></p>
         </section>
 
         <section class="strip alt">

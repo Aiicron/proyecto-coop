@@ -33,10 +33,10 @@
     <aside class="sidebar" id="sidebar">
         <h2>Menú</h2>
         <ul>
-            <li><a href="bienvenida.html">Inicio</a></li>
-            <li><a href="pagos.html">Mis pagos</a></li>
-            <li><a href="horas.html">Horas</a></li>
-            <li><a href="perfil.html">Mi perfil</a></li>
+            <li><a href="bienvenida.php">Inicio</a></li>
+            <li><a href="pagos.php">Mis pagos</a></li>
+            <li><a href="horas.php">Horas</a></li>
+            <li><a href="perfil.php">Mi perfil</a></li>
             <li><a href="#" class="logout">Cerrar sesión</a></li>
         </ul>
     </aside>

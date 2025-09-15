@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($estado['estado'] === "aceptado") {
                 $_SESSION['documento'] = $usuario['documento'];
                 $_SESSION['nombre'] = $usuario['nombre'];
-                header("Location: ../frontend-coop/bienvenida.html");
+                header("Location: ../frontend-coop/inicial.php");
                 exit();
             } elseif ($estado['estado'] === "pendiente") {
                 $mensaje = "Tu solicitud aún está pendiente de aprobación.";
@@ -204,7 +204,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Ingresar</button>
 
             <!-- Mensaje centrado -->
-            <?php if (!empty($mensaje)) : ?>
+            <?php if (!empty($mensaje)): ?>
                 <div class="mensaje-container">
                     <div class="mensaje <?php echo $mensajeClase; ?>">
                         <?php echo $mensaje; ?>

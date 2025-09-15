@@ -27,6 +27,7 @@ $resultPagos = mysqli_query($enlace, $queryPagos);
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -72,22 +73,23 @@ $resultPagos = mysqli_query($enlace, $queryPagos);
                             </tr>
                         </thead>
                         <tbody>
-                        <?php while ($row = mysqli_fetch_assoc($resultado)) : ?>
-                            <tr>
-                                <td><?php echo $row['documento']; ?></td>
-                                <td><?php echo $row['nombre']; ?></td>
-                                <td><?php echo $row['correo']; ?></td>
-                                <td><?php echo ucfirst($row['estado']); ?></td>
-                                <td>
-                                    <form action="acciones.php" method="POST" style="display:inline;">
-                                        <input type="hidden" name="documento" value="<?php echo $row['documento']; ?>">
-                                        <button type="submit" name="accion" value="aceptado" class="btn-aceptar">Aceptar</button>
-                                        <button type="submit" name="accion" value="rechazado" class="btn-rechazar">Rechazar</button>
-                                        <button type="submit" name="accion" value="pendiente" class="btn-actualizar">Pendiente</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endwhile; ?>
+                            <?php while ($row = mysqli_fetch_assoc($resultado)): ?>
+                                <tr>
+                                    <td><?php echo $row['documento']; ?></td>
+                                    <td><?php echo $row['nombre']; ?></td>
+                                    <td><?php echo $row['correo']; ?></td>
+                                    <td><?php echo ucfirst($row['estado']); ?></td>
+                                    <td>
+                                        <form action="acciones.php" method="POST" style="display:inline;">
+                                            <input type="hidden" name="documento" value="<?php echo $row['documento']; ?>">
+                                            <button type="submit" name="accion" value="aceptado"
+                                                class="btn-aceptar">Aceptar</button>
+                                            <button type="submit" name="accion" value="rechazado"
+                                                class="btn-rechazar">Rechazar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
                         </tbody>
                     </table>
                 </div>
@@ -95,45 +97,48 @@ $resultPagos = mysqli_query($enlace, $queryPagos);
 
             <!-- 🔹 Los demás módulos (pagos, horas, unidades, reportes) -->
             <section id="pagos" class="card">
-    <h2>Validación de Comprobantes</h2>
-    <div class="table-wrapper">
-        <table class="admin-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Documento</th>
-                    <th>Usuario</th>
-                    <th>Tipo</th>
-                    <th>Archivo</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php while ($row = mysqli_fetch_assoc($resultPagos)) : ?>
-                <tr>
-                    <td><?php echo $row['id_comprobante']; ?></td>
-                    <td><?php echo $row['documento']; ?></td>
-                    <td><?php echo $row['nombre']; ?></td>
-                    <td><?php echo ucfirst($row['tipo']); ?></td>
-                    <td>
-                        <a href="../<?php echo $row['archivo_pdf']; ?>" target="_blank">Ver PDF</a>
-                    </td>
-                    <td><?php echo ucfirst($row['estado']); ?></td>
-                    <td>
-                        <form action="acciones.php" method="POST" style="display:inline;">
-                            <input type="hidden" name="documento" value="<?php echo $row['documento']; ?>">
-                            <input type="hidden" name="id_comprobante" value="<?php echo $row['id_comprobante']; ?>">
-                            <button type="submit" name="accion" value="aprobar_comprobante" class="btn-aceptar">Aprobar</button>
-                            <button type="submit" name="accion" value="rechazar_comprobante" class="btn-rechazar">Rechazar</button>
-                        </form>
-                    </td>
-                </tr>
-            <?php endwhile; ?>
-            </tbody>
-        </table>
-    </div>
-</section>
+                <h2>Validación de Comprobantes</h2>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Documento</th>
+                                <th>Usuario</th>
+                                <th>Tipo</th>
+                                <th>Archivo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($resultPagos)): ?>
+                                <tr>
+                                    <td><?php echo $row['id_comprobante']; ?></td>
+                                    <td><?php echo $row['documento']; ?></td>
+                                    <td><?php echo $row['nombre']; ?></td>
+                                    <td><?php echo ucfirst($row['tipo']); ?></td>
+                                    <td>
+                                        <a href="../<?php echo $row['archivo_pdf']; ?>" target="_blank">Ver PDF</a>
+                                    </td>
+                                    <td><?php echo ucfirst($row['estado']); ?></td>
+                                    <td>
+                                        <form action="acciones.php" method="POST" style="display:inline;">
+                                            <input type="hidden" name="documento" value="<?php echo $row['documento']; ?>">
+                                            <input type="hidden" name="id_comprobante"
+                                                value="<?php echo $row['id_comprobante']; ?>">
+                                            <button type="submit" name="accion" value="aprobar_comprobante"
+                                                class="btn-aceptar">Aprobar</button>
+                                            <button type="submit" name="accion" value="rechazar_comprobante"
+                                                class="btn-rechazar">Rechazar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
             <section id="horas" class="card">
                 <h2>Registro de Horas</h2>
@@ -152,4 +157,5 @@ $resultPagos = mysqli_query($enlace, $queryPagos);
         </div>
     </main>
 </body>
+
 </html>

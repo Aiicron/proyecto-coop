@@ -154,15 +154,11 @@ body {
     background-color: #C0392B;
 }
 
-.btn-actualizar {
-    background-color: #2980B9;
-}
 
 .admin-table button:hover {
     transform: scale(1.05);
     opacity: 0.9;
 }
-
 
 @media (max-width: 768px) {
     .topbar {
