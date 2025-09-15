@@ -1,5 +1,5 @@
 CREATE DATABASE viviendas;
-USE viviedas;
+USE viviendas;
 
 
 CREATE TABLE usuarios (
