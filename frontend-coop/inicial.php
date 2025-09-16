@@ -110,13 +110,6 @@ $conn->close();
         </div>
     </nav>
 
-    <aside class="sidebar" id="sidebar">
-        <h2>Menú</h2>
-        <ul>
-            <li><a href="perfil.php">Mi perfil</a></li>
-            <li><a href="../login/logout.php" class="logout">Cerrar sesión</a></li>
-        </ul>
-    </aside>
 
     <div class="background"></div>
 
