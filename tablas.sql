@@ -46,9 +46,9 @@ CREATE TABLE horas_trabajadas (
 CREATE TABLE comprobante_pago (
   id_comprobante INT AUTO_INCREMENT PRIMARY KEY,
   documento VARCHAR(20) NOT NULL,
+  archivo_pdf VARCHAR(255),
   estado ENUM('pendiente', 'aprobado', 'rechazado') NOT NULL,
   tipo ENUM('inicial','mensual','compensatorio') NOT NULL DEFAULT 'mensual',
-  archivo_pdf VARCHAR(255),
   fecha_subida DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (documento) REFERENCES usuarios(documento)
 );
