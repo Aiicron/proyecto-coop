@@ -1,0 +1,22 @@
+:root {
+    /* Colores principales */
+    --color-primary: #8B7355;        /* Beige medio/marrón suave */
+    --color-secondary: #C4A77D;      /* Beige dorado */
+    --color-dark: #5D4E37;           /* Marrón oscuro */
+    --color-light: #D4C4B0;          /* Beige claro */
+    --color-accent: #E8DCC4;         /* Beige muy claro */
+    
+    /* Fondos */
+    --color-bg: #FFFFFF;             /* Blanco */
+    --color-bg-alt: #F5F1E8;         /* Beige muy claro */
+    --color-bg-card: #FFFEF9;        /* Blanco cálido */
+    
+    /* Estados */
+    --color-success: #7A9D54;        /* Verde oliva */
+    --color-warning: #D4A574;        /* Naranja beige */
+    --color-danger: #B85C5C;         /* Rojo terroso */
+    
+    /* Textos */
+    --color-text: #3E3226;
+    --color-text-light: #FFFFFF;
+}

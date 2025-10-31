@@ -7,7 +7,7 @@ CREATE TABLE usuarios (
   apellido1 VARCHAR(100),
   apellido2 VARCHAR(100),
   contrasena VARCHAR(255) NOT NULL,
-  correo VARCHAR(100) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL UNIQUE,
   motivo_ingreso TEXT
 );
 

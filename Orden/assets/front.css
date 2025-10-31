@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F5F1E8;
+    color: #3E3226;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #FFFDF6;
+    box-shadow: 0 4px 20px rgba(93, 78, 55, 0.2);
+    padding: 12px 30px;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.logo1 {
+    width: 50px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.logo1:hover {
+    transform: scale(1.1);
+}
+
+.nav-center {
+    flex: 1;
+    text-align: center;
+}
+
+.nav-title {
+    font-weight: 600;
+    color: #5D4E37;
+    font-size: 20px;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 100%;
+    background: #5D4E37;
+    border-radius: 2px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 240px;
+    height: 100%;
+    background-color: #FFFDF6;
+    box-shadow: 2px 0 12px rgba(93, 78, 55, 0.3);
+    padding: 2rem 1rem;
+    transition: left 0.3s ease-in-out;
+    z-index: 1500;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    color: #5D4E37;
+    margin-bottom: 1rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 1rem;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #3E3226;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: block;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #E8DCC4;
+    color: #5D4E37;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("fondo2.jpg") no-repeat center/cover;
+    filter: blur(8px) brightness(0.9);
+    z-index: -1;
+}
+
+.dashboard {
+    margin-top: 100px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.strip {
+    background-color: #FFFFFF;
+    border-left: 6px solid #8B7355;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(93, 78, 55, 0.1);
+}
+
+.strip h2 {
+    color: #5D4E37;
+    margin-bottom: 1rem;
+}
+
+.strip.alt {
+    border-left-color: #C4A77D;
+    background-color: #F5F1E8;
+}
+
+button,
+.quick-link,
+input[type="submit"],
+.btn-hover,
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 18px;
+    background: #8B7355;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover,
+.quick-link:hover,
+input[type="submit"]:hover,
+.btn-hover:hover,
+.btn:hover {
+    background: #5D4E37;
+    box-shadow: 0 4px 12px rgba(93, 78, 55, 0.25);
+    transform: translateY(-2px);
+}
+
+.highlight {
+    display: flex;
+    justify-content: space-around;
+    background: linear-gradient(135deg, #C4A77D 0%, #D4C4B0 100%);
+    color: #3E3226;
+    font-weight: 600;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(93, 78, 55, 0.15);
+}
+
+.highlight i {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.highlight div:hover i {
+    transform: scale(1.2);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+    color: #5D4E37;
+}
+
+input[type="text"],
+input[type="file"],
+select {
+    padding: 10px;
+    border: 2px solid #D4C4B0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus,
+select:focus {
+    outline: none;
+    border-color: #8B7355;
+}
+
+input[type="file"] {
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+select {
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn-hover2 {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 18px;
+    background: #8B7355;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    width: 20%;
+    text-align: center;
+}
+
+.btn-hover2:hover {
+    background: #5D4E37;
+    box-shadow: 0 4px 12px rgba(93, 78, 55, 0.25);
+}
+
+/* Estados de comprobantes */
+.pendiente {
+    color: #D4A574;
+}
+
+.aprobado {
+    color: #7A9D54;
+}
+
+.rechazado {
+    color: #B85C5C;
+}
