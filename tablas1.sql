@@ -1,5 +1,5 @@
 
-DROP DATABASE IF EXISTS viviendas;
+CREATE DATABASE viviendas;
 USE viviendas;
 
 
