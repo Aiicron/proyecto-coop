@@ -264,7 +264,7 @@ select {
 
 /* Estados de comprobantes */
 .pendiente {
-    color: #D4A574;
+    color: #ffffff;
 }
 
 .aprobado {
@@ -274,3 +274,4 @@ select {
 .rechazado {
     color: #B85C5C;
 }
+

@@ -25,7 +25,7 @@ class RegistroController {
         } else {
             if ($this->modelo->registrar($nombre, $correo, $contrasena, $documento, $motivo)) {
                 if ($this->modelo->registrarAutenticacion($documento)) {
-                    $mensaje = "<p class='success'>✅ Solicitud enviada con éxito. En 48h recibirá un correo si es aprobada.</p>";
+                    $mensaje = "<p class='success'> Solicitud enviada con éxito. En 48h recibirá un correo si es aprobada.</p>";
                 } else {
                     $mensaje = "<p class='error'>Error al registrar autenticación.</p>";
                 }

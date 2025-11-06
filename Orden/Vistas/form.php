@@ -29,7 +29,7 @@
                 <ul>
                     <li><a href="./index.php?page=nosotros">Nosotros</a></li>
                     <li><a href="#contacto">Contacto</a></li>
-                    <a href="./index.php?page=login" class="IS">Iniciar sesión</a>
+                    <li><a href="./index.php?page=login" class="IS">Iniciar sesión</a></li>
                 </ul>
             </div>
         </nav>
@@ -66,7 +66,7 @@
             <input type="number" id="cedula" name="cedula" required>
 
             <label for="comentario">Motivo de ingreso</label>
-            <textarea id="comentario" name="comentario" rows="3"></textarea>
+            <input type="text"  id="comentario" name="comentario" required>
 
             <button type="submit" name="registro">Enviar solicitud</button>
             <div id="mensaje" class="mensaje"><?php echo $mensaje ?? ''; ?></div>

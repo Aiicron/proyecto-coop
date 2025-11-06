@@ -13,8 +13,8 @@
             margin-top: 10px;
         }
 
-        /* Ajuste para el botón de ingresar */
-        .btn-ingresar {
+        
+.btn-ingresar {
             display: inline-block;
             text-align: center;
             padding: 10px 20px;
@@ -28,7 +28,7 @@
 
         .btn-ingresar:hover {
             background-color: #219150;
-        }
+}
     </style>
 </head>
 

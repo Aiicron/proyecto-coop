@@ -33,7 +33,7 @@ class PagosController {
 
         // Mostrar mensaje si viene de redirección
         if (isset($_GET['uploaded'])) {
-            $mensaje = "✅ Comprobante mensual subido exitosamente. En espera de aprobación.";
+            $mensaje = "Comprobante mensual subido exitosamente. En espera de aprobación.";
         }
 
         // Obtener historial de pagos mensuales
