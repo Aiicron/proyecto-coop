@@ -63,7 +63,7 @@
             <input type="password" id="contraseña" name="contrasena" required>
 
             <label for="cedula">Documento</label>
-            <input type="number" id="cedula" name="cedula" required>
+<input type="text" id="cedula" name="cedula" pattern="[0-9]{8}" maxlength="8" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
 
             <label for="comentario">Motivo de ingreso</label>
             <input type="text"  id="comentario" name="comentario" required>

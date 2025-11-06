@@ -87,10 +87,10 @@ class Perfil {
     }
 
     /**
-     * Actualiza los datos personales del usuario (nombre, apellidos, email)
+     * Actualiza los datos personales del usuario (nombre y correo)
      */
     public function actualizarDatosPersonales($documento, $nombre, $correo) {
-        // Verificar que el email no esté en uso por otro usuario
+        // Verificar que el correo no esté en uso por otro usuario
         $stmt = $this->conexion->prepare(
             "SELECT documento FROM usuarios WHERE correo = ? AND documento != ?"
         );
@@ -100,7 +100,7 @@ class Perfil {
         
         if ($resultado->num_rows > 0) {
             $stmt->close();
-            return ['success' => false, 'mensaje' => 'El email ya está en uso por otro usuario.'];
+            return ['success' => false, 'mensaje' => 'El correo ya está en uso por otro usuario.'];
         }
         $stmt->close();
 
@@ -110,7 +110,7 @@ class Perfil {
              SET nombre = ?, correo = ?
              WHERE documento = ?"
         );
-        $stmt->bind_param("sssss", $nombre, $correo, $documento);
+        $stmt->bind_param("sss", $nombre, $correo, $documento);
         $exito = $stmt->execute();
         $stmt->close();
 
@@ -140,4 +140,35 @@ class Perfil {
         return false;
     }
 
+    /**
+     * Cambia la contraseña del usuario
+     */
+    public function cambiarContrasena($documento, $contrasenaActual, $contrasenaNueva) {
+        // Verificar contraseña actual
+        if (!$this->verificarContrasenaActual($documento, $contrasenaActual)) {
+            return ['success' => false, 'mensaje' => 'La contraseña actual es incorrecta.'];
+        }
+
+        // Validar que la nueva contraseña tenga al menos 6 caracteres
+        if (strlen($contrasenaNueva) < 6) {
+            return ['success' => false, 'mensaje' => 'La nueva contraseña debe tener al menos 6 caracteres.'];
+        }
+
+        // Hash de la nueva contraseña
+        $hashNuevo = password_hash($contrasenaNueva, PASSWORD_DEFAULT);
+
+        // Actualizar contraseña
+        $stmt = $this->conexion->prepare(
+            "UPDATE usuarios SET contrasena = ? WHERE documento = ?"
+        );
+        $stmt->bind_param("ss", $hashNuevo, $documento);
+        $exito = $stmt->execute();
+        $stmt->close();
+
+        if ($exito) {
+            return ['success' => true, 'mensaje' => 'Contraseña actualizada correctamente.'];
+        } else {
+            return ['success' => false, 'mensaje' => 'Error al actualizar la contraseña.'];
+        }
+    }
 }

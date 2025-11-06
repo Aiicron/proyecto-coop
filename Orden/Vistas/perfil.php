@@ -140,16 +140,15 @@
     </style>
 </head>
 <body>
+    <!-- NAVEGACIÓN -->
     <nav>
         <div class="nav-content">
             <div class="hamburger" id="hamburger">
                 <span></span><span></span><span></span>
             </div>
-
             <div class="nav-center">
                 <h2 class="nav-title">Nuevo Amanecer</h2>
             </div>
-
             <div class="nav-right">
                 <img src="assets/logonuevo.png" class="logo1" alt="Logo cooperativa">
             </div>
@@ -237,22 +236,20 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="nombre">Nombre Completo:</label>
+                    <label for="nombre">Nombre Completo *:</label>
                     <input type="text" id="nombre" name="nombre" 
                            value="<?php echo htmlspecialchars($informacion['nombre']); ?>" required>
                 </div>
 
-
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" 
+                    <label for="correo">Correo Electrónico *:</label>
+                    <input type="email" id="correo" name="correo" 
                            value="<?php echo htmlspecialchars($informacion['correo']); ?>" required>
                 </div>
 
                 <button type="submit" class="btn-primary">Guardar Cambios</button>
             </form>
         </section>
-
 
     </main>
 
