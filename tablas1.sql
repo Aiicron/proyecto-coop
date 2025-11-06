@@ -6,13 +6,9 @@ USE viviendas;
 CREATE TABLE usuarios (
   documento VARCHAR(20) PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
-  apellido1 VARCHAR(100),
-  apellido2 VARCHAR(100),
   contrasena VARCHAR(255) NOT NULL,
-  email VARCHAR(100) NOT NULL UNIQUE,
+  correo VARCHAR(100) NOT NULL UNIQUE,
   motivo_ingreso TEXT,
-  INDEX idx_email (email),
-  INDEX idx_nombre (nombre)
 );
 
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil - Cooperativa Nuevo Amanecer</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/CSS/front.css">
+    <link rel="stylesheet" href="assets/front.css">
     <style>
         .perfil-header {
             background: linear-gradient(135deg, #C4A77D 0%, #D4C4B0 100%);
@@ -140,33 +140,30 @@
     </style>
 </head>
 <body>
-    <!-- NAVEGACIÓN -->
     <nav>
         <div class="nav-content">
             <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
+
             <div class="nav-center">
                 <h2 class="nav-title">Nuevo Amanecer</h2>
             </div>
+
             <div class="nav-right">
-                <img src="assets/imagenes/logonuevo.png" class="logo1" alt="Logo cooperativa">
+                <img src="assets/logonuevo.png" class="logo1" alt="Logo cooperativa">
             </div>
         </div>
     </nav>
 
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
         <h2>Menú</h2>
         <ul>
-            <li><a href="index.php?page=bienvenida">🏠 Inicio</a></li>
-            <li><a href="index.php?page=pagos">💳 Mis pagos</a></li>
-            <li><a href="index.php?page=horas">⏰ Horas</a></li>
-            <li><a href="index.php?page=perfil" class="active">👤 Mi perfil</a></li>
-            <li><a href="index.php?page=nosotros">👥 Nosotros</a></li>
-            <li><a href="index.php?accion=logout" class="logout">🚪 Cerrar sesión</a></li>
+            <li><a href="index.php?page=bienvenida">Inicio</a></li>
+            <li><a href="index.php?page=pagos">Mis pagos</a></li>
+            <li><a href="index.php?page=horas">Horas</a></li>
+            <li><a href="index.php?page=perfil">Mi perfil</a></li>
+            <li><a href="index.php?accion=logout" class="logout">Cerrar sesión</a></li>
         </ul>
     </aside>
 
@@ -189,7 +186,7 @@
 
         <!-- HEADER DEL PERFIL -->
         <div class="perfil-header">
-            <h1>👤 <?php echo htmlspecialchars($informacion['nombre'] . ' ' . $informacion['apellido1']); ?></h1>
+            <h1><?php echo htmlspecialchars($informacion['nombre']); ?></h1>
             <p><strong>Documento:</strong> <?php echo htmlspecialchars($informacion['documento']); ?></p>
             <span class="estado-badge <?php echo $informacion['estado_autenticacion']; ?>">
                 <?php echo ucfirst($informacion['estado_autenticacion']); ?>
@@ -199,7 +196,7 @@
         <!-- ESTADÍSTICAS -->
         <div class="stats-grid">
             <div class="stat-card">
-                <h3>🏠 Vivienda Asignada</h3>
+                <h3>Vivienda Asignada</h3>
                 <div class="valor">
                     <?php echo $vivienda ? $vivienda['num_puerta'] : '-'; ?>
                 </div>
@@ -211,19 +208,19 @@
             </div>
 
             <div class="stat-card">
-                <h3>⏰ Horas Trabajadas</h3>
+                <h3>Horas Trabajadas</h3>
                 <div class="valor"><?php echo $totalHoras; ?></div>
                 <small>Total acumuladas</small>
             </div>
 
             <div class="stat-card">
-                <h3>✅ Comprobantes Aprobados</h3>
+                <h3>Comprobantes Aprobados</h3>
                 <div class="valor"><?php echo $estadisticasComprobantes['aprobados']; ?></div>
                 <small>de <?php echo $estadisticasComprobantes['total']; ?> totales</small>
             </div>
 
             <div class="stat-card">
-                <h3>⏳ Comprobantes Pendientes</h3>
+                <h3>Comprobantes Pendientes</h3>
                 <div class="valor"><?php echo $estadisticasComprobantes['pendientes']; ?></div>
                 <small>En revisión</small>
             </div>
@@ -231,7 +228,7 @@
 
         <!-- EDITAR DATOS PERSONALES -->
         <section class="strip">
-            <h2>📝 Datos Personales</h2>
+            <h2>Datos Personales</h2>
             
             <form method="POST" action="index.php?accion=actualizar_datos">
                 <div class="form-group">
@@ -240,61 +237,25 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="nombre">Nombre *:</label>
+                    <label for="nombre">Nombre Completo:</label>
                     <input type="text" id="nombre" name="nombre" 
                            value="<?php echo htmlspecialchars($informacion['nombre']); ?>" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="apellido1">Primer Apellido:</label>
-                    <input type="text" id="apellido1" name="apellido1" 
-                           value="<?php echo htmlspecialchars($informacion['apellido1'] ?? ''); ?>">
-                </div>
 
                 <div class="form-group">
-                    <label for="apellido2">Segundo Apellido:</label>
-                    <input type="text" id="apellido2" name="apellido2" 
-                           value="<?php echo htmlspecialchars($informacion['apellido2'] ?? ''); ?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email *:</label>
+                    <label for="email">Email:</label>
                     <input type="email" id="email" name="email" 
-                           value="<?php echo htmlspecialchars($informacion['email']); ?>" required>
+                           value="<?php echo htmlspecialchars($informacion['correo']); ?>" required>
                 </div>
 
-                <button type="submit" class="btn-primary">💾 Guardar Cambios</button>
+                <button type="submit" class="btn-primary">Guardar Cambios</button>
             </form>
         </section>
 
-        <!-- CAMBIAR CONTRASEÑA -->
-        <section class="strip alt">
-            <h2>🔒 Cambiar Contraseña</h2>
-            
-            <form method="POST" action="index.php?accion=cambiar_contrasena">
-                <div class="form-group">
-                    <label for="contrasena_actual">Contraseña Actual *:</label>
-                    <input type="password" id="contrasena_actual" name="contrasena_actual" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="contrasena_nueva">Nueva Contraseña * (mínimo 6 caracteres):</label>
-                    <input type="password" id="contrasena_nueva" name="contrasena_nueva" 
-                           minlength="6" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="contrasena_confirmar">Confirmar Nueva Contraseña *:</label>
-                    <input type="password" id="contrasena_confirmar" name="contrasena_confirmar" 
-                           minlength="6" required>
-                </div>
-
-                <button type="submit" class="btn-primary btn-secondary">🔑 Cambiar Contraseña</button>
-            </form>
-        </section>
 
     </main>
 
-    <script src="assets/JS/ham.js"></script>
+    <script src="assets/ham.js"></script>
 </body>
 </html>

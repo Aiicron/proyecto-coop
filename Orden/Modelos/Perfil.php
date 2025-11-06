@@ -11,7 +11,7 @@ class Perfil {
      */
     public function obtenerInformacionCompleta($documento) {
         $stmt = $this->conexion->prepare(
-            "SELECT u.documento, u.nombre, u.apellido1, u.apellido2, u.email, u.motivo_ingreso,
+            "SELECT u.documento, u.nombre, u.correo, u.motivo_ingreso,
                     ra.estado as estado_autenticacion
              FROM usuarios u
              LEFT JOIN registro_autenticacion ra ON u.documento = ra.documento
@@ -89,12 +89,12 @@ class Perfil {
     /**
      * Actualiza los datos personales del usuario (nombre, apellidos, email)
      */
-    public function actualizarDatosPersonales($documento, $nombre, $apellido1, $apellido2, $email) {
+    public function actualizarDatosPersonales($documento, $nombre, $correo) {
         // Verificar que el email no esté en uso por otro usuario
         $stmt = $this->conexion->prepare(
-            "SELECT documento FROM usuarios WHERE email = ? AND documento != ?"
+            "SELECT documento FROM usuarios WHERE correo = ? AND documento != ?"
         );
-        $stmt->bind_param("ss", $email, $documento);
+        $stmt->bind_param("ss", $correo, $documento);
         $stmt->execute();
         $resultado = $stmt->get_result();
         
@@ -107,17 +107,17 @@ class Perfil {
         // Actualizar datos
         $stmt = $this->conexion->prepare(
             "UPDATE usuarios 
-             SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?
+             SET nombre = ?, correo = ?
              WHERE documento = ?"
         );
-        $stmt->bind_param("sssss", $nombre, $apellido1, $apellido2, $email, $documento);
+        $stmt->bind_param("sssss", $nombre, $correo, $documento);
         $exito = $stmt->execute();
         $stmt->close();
 
         if ($exito) {
-            return ['success' => true, 'mensaje' => '✅ Datos actualizados correctamente.'];
+            return ['success' => true, 'mensaje' => 'Datos actualizados correctamente.'];
         } else {
-            return ['success' => false, 'mensaje' => '⚠️ Error al actualizar los datos.'];
+            return ['success' => false, 'mensaje' => 'Error al actualizar los datos.'];
         }
     }
 
@@ -140,35 +140,4 @@ class Perfil {
         return false;
     }
 
-    /**
-     * Cambia la contraseña del usuario
-     */
-    public function cambiarContrasena($documento, $contrasenaActual, $contrasenaNueva) {
-        // Verificar contraseña actual
-        if (!$this->verificarContrasenaActual($documento, $contrasenaActual)) {
-            return ['success' => false, 'mensaje' => '⚠️ La contraseña actual es incorrecta.'];
-        }
-
-        // Validar que la nueva contraseña tenga al menos 6 caracteres
-        if (strlen($contrasenaNueva) < 6) {
-            return ['success' => false, 'mensaje' => '⚠️ La nueva contraseña debe tener al menos 6 caracteres.'];
-        }
-
-        // Hash de la nueva contraseña
-        $hashNuevo = password_hash($contrasenaNueva, PASSWORD_DEFAULT);
-
-        // Actualizar contraseña
-        $stmt = $this->conexion->prepare(
-            "UPDATE usuarios SET contrasena = ? WHERE documento = ?"
-        );
-        $stmt->bind_param("ss", $hashNuevo, $documento);
-        $exito = $stmt->execute();
-        $stmt->close();
-
-        if ($exito) {
-            return ['success' => true, 'mensaje' => '✅ Contraseña actualizada correctamente.'];
-        } else {
-            return ['success' => false, 'mensaje' => '⚠️ Error al actualizar la contraseña.'];
-        }
-    }
 }

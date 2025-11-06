@@ -19,6 +19,7 @@ require_once __DIR__ . "/Controladores/BackofficeController.php";
 require_once __DIR__ . "/Controladores/BienvenidaController.php"; 
 require_once __DIR__ . "/Controladores/PagosController.php";
 require_once __DIR__ . "/Controladores/HorasController.php";
+require_once __DIR__ . "/Controladores/PerfilController.php";
 
 // Instanciar controladores
 $registroController = new RegistroController($enlace);
@@ -29,6 +30,7 @@ $backofficeController = new BackofficeController($enlace);
 $bienvenidaController = new BienvenidaController($enlace); 
 $pagosController = new PagosController($enlace);
 $horasController = new HorasController($enlace);
+$perfilController = new PerfilController($enlace);
 
 // Obtener parámetros
 $page = $_GET['page'] ?? 'form';
@@ -75,6 +77,15 @@ if ($accion === 'desasignar_unidad') {
     $backofficeController->desasignarUnidad();
     exit;
 }
+if ($accion === 'actualizar_datos') {
+    $perfilController->actualizarDatos();
+    exit;
+}
+
+if ($accion === 'cambiar_contrasena') {
+    $perfilController->cambiarContrasena();
+    exit;
+}
 
 // --- Páginas ---
 switch ($page) {
@@ -110,4 +121,8 @@ switch ($page) {
     default:
         $registroController->mostrarFormulario();
         break;
+        
+    case 'perfil':
+    $perfilController->mostrarPerfil();
+    break;
 }

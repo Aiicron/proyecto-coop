@@ -119,7 +119,7 @@
                 </div>
             <?php else: ?>
                 <p style="background-color: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #ffc107;">
-                    <strong>⚠️ No tienes comprobantes subidos.</strong>
+                    <strong>No tienes comprobantes subidos.</strong>
                 </p>
             <?php endif; ?>
         </section>
