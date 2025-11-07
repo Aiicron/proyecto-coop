@@ -255,9 +255,9 @@
                                 <td class="<?php echo htmlspecialchars($comp['estado']); ?>">
                                     <?php 
                                     $estado = $comp['estado'];
-                                    if ($estado === 'aprobado') echo '✅ ';
-                                    elseif ($estado === 'pendiente') echo '⏳ ';
-                                    else echo '❌ ';
+                                    if ($estado === 'aprobado') echo '';
+                                    elseif ($estado === 'pendiente') echo '';
+                                    else echo '';
                                     echo ucfirst($estado); 
                                     ?>
                                 </td>

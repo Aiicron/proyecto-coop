@@ -16,15 +16,7 @@
         <nav>
             <div class="nav-content">
                 <div class="nav-left">
-                    <img src="assets/logonuevo.png" alt="Logo" class="logo1">
-                    <select id="language-select">
-                        <option value="es">Español</option>
-                        <option value="en">English</option>
-                        <option value="pt">Português</option>
-                        <option value="al">Deutsch</option>
-                        <option value="it">Italiano</option>
-                        <option value="fr">Français</option>
-                    </select>
+                    <img src="assets/logonuevo.png" alt="Logo" class="logo1">             
                 </div>
                 <ul>
                     <li><a href="./index.php?page=nosotros">Nosotros</a></li>
