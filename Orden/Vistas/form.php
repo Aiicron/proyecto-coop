@@ -60,7 +60,10 @@
             <input type="email" id="email" name="correo" required>
 
             <label for="contraseña">Contraseña</label>
-            <input type="password" id="contraseña" name="contrasena" required>
+<input type="password" id="contraseña" name="contrasena" 
+       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+       title="Debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número" 
+       required>
 
             <label for="cedula">Documento</label>
 <input type="text" id="cedula" name="cedula" pattern="[0-9]{8}" maxlength="8" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>

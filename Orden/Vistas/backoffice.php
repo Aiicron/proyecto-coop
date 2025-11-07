@@ -20,7 +20,6 @@
             <li><a href="#pagos">Pagos</a></li>
             <li><a href="#horas">Horas</a></li>
             <li><a href="#unidades">Unidades</a></li>
-            <li><a href="#reportes">Reportes</a></li>
         </ul>
     </nav>
 
@@ -287,10 +286,6 @@
     <?php endif; ?>
 </section>
 
-            <section id="reportes" class="card">
-                <h2>Estado General</h2>
-                <p>Aquí se mostrarán los reportes generales.</p>
-            </section>
         </div>
     </main>
 </body>

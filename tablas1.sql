@@ -8,7 +8,7 @@ CREATE TABLE usuarios (
   nombre VARCHAR(100) NOT NULL,
   contrasena VARCHAR(255) NOT NULL,
   correo VARCHAR(100) NOT NULL UNIQUE,
-  motivo_ingreso TEXT,
+  motivo_ingreso TEXT
 );
 
 
@@ -136,3 +136,10 @@ INSERT INTO unidades_habitacionales (num_puerta, direccion) VALUES
 (204, 'Calle Secundaria 204'),
 (205, 'Calle Secundaria 205');
 
+INSERT INTO usuarios (documento, nombre, correo, contrasena, motivo_ingreso) 
+VALUES ('admin', 'Administrador', 'admin@nuevoamanecer.coop', 'admin123', 'Usuario administrador del sistema')
+ON DUPLICATE KEY UPDATE nombre=nombre;
+
+INSERT INTO administrativo (documento) 
+VALUES ('admin')
+ON DUPLICATE KEY UPDATE documento=documento;

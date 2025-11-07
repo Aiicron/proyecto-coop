@@ -29,15 +29,28 @@ class LoginController {
             $usuario = $this->usuarioModel->obtenerPorCorreo($correo);
 
             if ($usuario) {
-                // Verificar contraseña
+                // Verificar contraseña (texto plano - sin hash)
                 if ($usuario['contrasena'] === $contrasena) {
-                    // Obtener estado de autenticación
+                    
+                    // VERIFICAR SI ES ADMINISTRADOR
+                    if ($this->usuarioModel->esAdministrador($usuario['documento'])) {
+                        // Es administrador - redirigir al backoffice
+                        $_SESSION['documento'] = $usuario['documento'];
+                        $_SESSION['nombre'] = $usuario['nombre'];
+                        $_SESSION['es_admin'] = true;
+
+                        header("Location: index.php?page=backoffice");
+                        exit();
+                    }
+
+                    // NO es admin - verificar estado de autenticación normal
                     $estado = $this->usuarioModel->obtenerEstadoAutenticacion($usuario['documento']);
 
                     if ($estado === "aceptado") {
-                        // Login exitoso
+                        // Login exitoso - usuario normal
                         $_SESSION['documento'] = $usuario['documento'];
                         $_SESSION['nombre'] = $usuario['nombre'];
+                        $_SESSION['es_admin'] = false;
 
                         // Redirigir a inicial
                         header("Location: index.php?page=inicial");

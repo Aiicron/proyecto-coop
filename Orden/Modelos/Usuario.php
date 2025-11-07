@@ -33,6 +33,13 @@ class Usuario {
         return ($resultado && mysqli_num_rows($resultado) > 0) ? mysqli_fetch_assoc($resultado) : null;
     }
 
+    public function obtenerPorDocumento($documento) {
+        $documento = mysqli_real_escape_string($this->db, $documento);
+        $sql = "SELECT * FROM usuarios WHERE documento='$documento' LIMIT 1";
+        $resultado = mysqli_query($this->db, $sql);
+        return ($resultado && mysqli_num_rows($resultado) > 0) ? mysqli_fetch_assoc($resultado) : null;
+    }
+
     public function obtenerEstadoAutenticacion($documento) {
         $documento = mysqli_real_escape_string($this->db, $documento);
         $sql = "SELECT estado FROM registro_autenticacion WHERE documento='$documento' LIMIT 1";
@@ -48,12 +55,25 @@ class Usuario {
         return ($resultado && mysqli_num_rows($resultado) > 0);
     }
 
-// Obtener todos los usuarios con su estado de autenticación
+    // Verificar si un usuario es administrador
+    public function esAdministrador($documento) {
+        $documento = mysqli_real_escape_string($this->db, $documento);
+        $sql = "SELECT * FROM administrativo WHERE documento='$documento' LIMIT 1";
+        $resultado = mysqli_query($this->db, $sql);
+        return ($resultado && mysqli_num_rows($resultado) > 0);
+    }
+
+    // Obtener todos los usuarios con su estado de autenticación
     public function obtenerTodosConEstado() {
         $query = "SELECT u.documento, u.nombre, u.correo, r.estado
                   FROM usuarios u
-                  LEFT JOIN registro_autenticacion r ON u.documento = r.documento";
+                  LEFT JOIN registro_autenticacion r ON u.documento = r.documento
+                  WHERE u.documento NOT IN (SELECT documento FROM administrativo)";
         $resultado = mysqli_query($this->db, $query);
+        
+        if (!$resultado) {
+            return [];
+        }
         
         $usuarios = [];
         while ($row = mysqli_fetch_assoc($resultado)) {
