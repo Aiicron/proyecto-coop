@@ -98,8 +98,6 @@ class Horas {
         return $fila['total'] ?? 0;
     }
 
-    // ⬇️ NUEVOS MÉTODOS PARA EL BACKOFFICE
-
     /**
      * Obtiene todas las horas registradas con datos del usuario
      * Para el backoffice
