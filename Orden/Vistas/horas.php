@@ -168,7 +168,7 @@
         <div class="info-box">
             <h3>Resumen de Horas</h3>
             <p><strong>Total de horas acumuladas:</strong> <?php echo $totalHoras; ?> horas</p>
-            <p><small>Se requieren al menos 21 horas mensuales de trabajo cooperativo.</small></p>
+            <p><small>Se requieren al menos 21 horas semanales de trabajo cooperativo.</small></p>
         </div>
 
         <!-- REGISTRAR NUEVAS HORAS -->
